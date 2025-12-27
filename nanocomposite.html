@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Nanocomposite Research" />
+    <title>Neuromorphic Nanocomposite — Owen Yao</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <div class="project-page">
+      <div class="project-nav">
+        <a class="btn" href="index.html">← Back to Home</a>
+      </div>
+
+      <main id="content" aria-label="Main content">
+        <div class="project-header">
+          <h1 class="name">Electrical Characterization of 3D Neuromorphic Nanocomposite</h1>
+          <p class="project-year">2023</p>
+        </div>
+
+        <img class="project-image" src="doge.png" alt="Nanocomposite Research" />
+
+        <div class="card">
+          <div class="project-section">
+            <h3>Overview</h3>
+            <p>
+              This research focused on the electrical characterization of 3D neuromorphic nanocomposite materials.
+              The study explored novel materials and their potential applications in neuromorphic computing systems.
+            </p>
+          </div>
+
+          <div class="project-section">
+            <h3>Technical Details</h3>
+            <p>
+              Add more detailed information about the nanocomposite research here. Describe the experimental methodology,
+              characterization techniques used, key findings, and potential applications in neuromorphic computing.
+            </p>
+            <div class="chips">
+              <span class="chip">Neuromorphic Computing</span>
+              <span class="chip">Materials Science</span>
+              <span class="chip">Electrical Characterization</span>
+              <span class="chip">Nanocomposites</span>
+            </div>
+            <div class="project-diagram-grid">
+              <div class="diagram-item">
+                <img src="https://via.placeholder.com/500x350/1a2332/ffffff?text=Material+Structure" alt="Material Structure" />
+                <p class="diagram-caption">3D Nanocomposite Structure</p>
+              </div>
+              <div class="diagram-item">
+                <img src="https://via.placeholder.com/500x350/1a2332/ffffff?text=Characterization" alt="Characterization Results" />
+                <p class="diagram-caption">Electrical Characterization Data</p>
+              </div>
+              <div class="diagram-item">
+                <img src="https://via.placeholder.com/500x350/1a2332/ffffff?text=IV+Curves" alt="I-V Curves" />
+                <p class="diagram-caption">Current-Voltage Characteristics</p>
+              </div>
+              <div class="diagram-item">
+                <img src="https://via.placeholder.com/500x350/1a2332/ffffff?text=Applications" alt="Applications" />
+                <p class="diagram-caption">Neuromorphic Computing Applications</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-section">
+            <h3>Links</h3>
+            <ul>
+              <li><a href="#" target="_blank" rel="noreferrer" style="color: #4d9fff;">Research Paper</a></li>
+              <li><a href="#" target="_blank" rel="noreferrer" style="color: #4d9fff;">Lab Documentation</a></li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h3>Contribution</h3>
+            <p>
+              Describe your specific contributions to this research, your role in the lab, and the impact of your work.
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Lightbox Overlay -->
+    <div class="lightbox-overlay" id="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <img class="lightbox-image" id="lightbox-img" src="" alt="Enlarged diagram">
+    </div>
+
+    <script>
+      // Lightbox functionality
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const diagramImages = document.querySelectorAll('.diagram-item img');
+      const closeBtn = document.querySelector('.lightbox-close');
+
+      // Open lightbox when clicking on diagram images
+      diagramImages.forEach(img => {
+        img.addEventListener('click', function() {
+          lightboxImg.src = this.src;
+          lightboxImg.alt = this.alt;
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
+      });
+
+      // Close lightbox when clicking close button
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeLightbox();
+      });
+
+      // Close lightbox when clicking overlay background
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      // Close lightbox with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+      }
+    </script>
+  </body>
+</html>

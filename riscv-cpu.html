@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="RISC-V CPU Project" />
+    <title>RISC-V CPU — Owen Yao</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <div class="project-page">
+      <div class="project-nav">
+        <a class="btn" href="index.html">← Back to Home</a>
+      </div>
+
+      <main id="content" aria-label="Main content">
+        <div class="project-header">
+          <h1 class="name">RISC-V 32 bit CPU with I Cache and Graphing Peripherals</h1>
+          <p class="project-year">2025</p>
+        </div>
+
+        <div class="card">
+          <div class="project-section">
+            <h3>Overview</h3>
+            <p>
+              The RTL block diagrams (see below) detail the RISC-V CPU, peripherals, and multi mapped I/O (MMIO) systems.
+              As part of final CPU optimizations, an I-cache was added primarily for latency reductions.
+              In addition to standard RISC-V instructions, the CPU is capable of multiplication and floating point conversions.
+              The calculator algorithm, written in RISC-V assembly, can be found in the linked repo.
+              Final hardening was conducted through Caravel System on Chip (SoC) and taped out on STARS' NEBULA III chip (pending arrival).
+            </p>
+          </div>
+
+          <div class="project-section">
+            <h3>Links</h3>
+            <ul>
+              <li><a href="https://github.com/STARS-Design-Track-2025/nebula-iii-team-04" target="_blank" rel="noreferrer" style="color: #4d9fff;">GitHub Repo</a></li>
+              <li><a href="https://docs.google.com/presentation/d/10imhudLxiSTwt-bNoYZ7AmsZal4b7ZP1pOPk0xVUYAw/edit?slide=id.g37287704538_2_0#slide=id.g37287704538_2_0" target="_blank" rel="noreferrer" style="color: #4d9fff;">Final Presentation</a></li>
+              <li><a href="https://www.youtube.com/watch?v=B1m-cUdcgSg" target="_blank" rel="noreferrer" style="color: #4d9fff;">Video Demo</a></li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h3>Technical Details</h3>
+
+            <div class="project-diagram-grid">
+              <div class="diagram-item">
+                <img src="top_level.png" />
+                <p class="diagram-caption">Top Level Diagram detailing full integration.</p>
+              </div>
+              <div class="diagram-item">
+                <img src="cpu_rtl.png" />
+                <p class="diagram-caption">CPU RTL Diagram - Unique from standard RISC-V CPU architecture, it implements a request unit for MMIO interaction.</p>
+              </div>
+              <div class="diagram-item">
+                <img src="mmio_rtl.png"/>
+                <p class="diagram-caption">MMIO RTL Diagram - Interacts with RAM through wishbone protocol.</p>
+              </div>
+              <div class="diagram-item">
+                <img src="request_unit_rtl.png"/>
+                <p class="diagram-caption">Request Unit RTL Diagram - Custom built to handle CPU-MMIO interactions </p>
+              </div>
+              <div class="diagram-item">
+                <img src="keypad_rtl.png"/>
+                <p class="diagram-caption">Keypad RTL Diagram - UART protocol for the 4x4 matrix keypad used in design.</p>
+              </div>
+              <div class="diagram-item">
+                <img src="screen_rtl.png"/>
+                <p class="diagram-caption">Screen RTL Diagram - TRT LCD Display, sends custom commands from datapath to display through SPI.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-section">
+            <h3>Contributions</h3>
+            <p>
+              - Implemented 8-bit parallel SPI protocol with custom counting logic for MMIO-screen communication.<br>
+              - Verified and resolved display issues with SPI communication to the screen via testbenching.<br>
+              - Integrated screen with MMIO, ensuring proper implementation with keypad, CPU and RAM storage.<br>
+              - Wrote/debugged RISC-V assembly code to ensure graphing functionality.<br>
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="lightbox-overlay" id="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <img class="lightbox-image" id="lightbox-img" src="" alt="Enlarged diagram">
+    </div>
+
+    <script>
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const diagramImages = document.querySelectorAll('.diagram-item img');
+      const closeBtn = document.querySelector('.lightbox-close');
+
+      diagramImages.forEach(img => {
+        img.addEventListener('click', function() {
+          lightboxImg.src = this.src;
+          lightboxImg.alt = this.alt;
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeLightbox();
+      });
+
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    </script>
+  </body>
+</html>

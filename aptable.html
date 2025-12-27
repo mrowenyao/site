@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="AptaBLE Project" />
+    <title>AptaBLE — Owen Yao</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <div class="project-page">
+      <div class="project-nav">
+        <a class="btn" href="index.html">← Back to Home</a>
+      </div>
+
+      <main id="content" aria-label="Main content">
+        <div class="project-header">
+          <h1 class="name">AptaBLE: A Deep Learning Platform for SELEX Optimization</h1>
+          <p class="project-year">2024</p>
+        </div>
+
+
+        <div class="card">
+          <div class="project-section">
+            <h3>Overview</h3>
+            <p>
+              Aptamers are short, single stranded DNA or RNA sequences that bind to specific targets such as proteins, small molecules, as well as cells, with high affinity and specificity. 
+              These aptamers can serve as molecular recognition elements, making them valuable in therapeutic applications, diagnostics, and targeted drug delivery as alternatives to antibodies. 
+              Aptamers are typically developed through in vitro SELEX. Despite the levels of success that have been realized through the development and enhancements in SELEX, several challenges persist. 
+              To overcome these limitations, we have developed AptaBLE (Aptamer Binding LanguagE), a large language model capable of predicting aptamer-protein interactions and generating novel aptamer sequences against diverse protein targets. 
+            </p>
+          </div>
+
+          <div class="project-section">
+            <h3>Links</h3>
+            <ul>
+              <li><a href="https://openreview.net/pdf/eea94ba98c27853039118830b7a5c0b8223f76fb.pdf" target="_blank" rel="noreferrer" style="color: #4d9fff;">Research Paper</a></li>
+              <li><a href="https://atombioworks.com/aptable-platform-intro/" target="_blank" rel="noreferrer" style="color: #4d9fff;">Site Access </a></li>
+              <li><a href="https://neurips.cc/virtual/2024/102810" target="_blank" rel="noreferrer" style="color: #4d9fff;">NeurIPS 2024 </a></li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h3>Technical Details</h3>
+
+            <div class="project-diagram-grid">
+              <div class="diagram-item">
+                <img src="comparison.png" />
+                <p class="diagram-caption">
+                  The AptaBLE generated aptamer has similar binding interfaces as well established aptamers, including those w/ nanomolar binding affinity.</p>
+              </div>
+              <div class="diagram-item">
+                <img src="pipeline.png" />
+                <p class="diagram-caption">
+                  Receives aptamer and DNA/RNA sequence as input, tokenized as vector embeddings into self and cross attention blocks. 
+                  Self attention blocks can be stacked (greater depth = greater accuraccy, generally).
+                  Cross attention blocks compare aptamer-protein embeddings and vice versa (see below).
+                  The resulting outputs are added, averaged out through mean pooling and concatenated to form a single vector embedding.
+                  MLP returns a single prediction score depending on task.
+                </p>
+              </div>
+              <div class="diagram-item">
+                <img src="attention_map.png" />
+                <p class="diagram-caption">Attention maps correspond accurately to binding interfaces as predicted.</p>
+              </div>
+              <div class="diagram-item">
+                <img src="attention_block.png"  />
+                <p class="diagram-caption">
+                  Internal cross attention architecture - Vector embeddings are represented as matrices, creating Key, Query, Value layers.
+                  Attenion score matrix compares tokens and is applied to values, then added back to original embedding for residual connection.
+                </p>
+              </div>
+                <div class="diagram-item">
+                <img src="model_comp.png" />
+                <p class="diagram-caption">AptaBLE outperforms existing methods (Alphafold 3, Aptatrans) specifically in aptemer-protein binding scoring.</p>
+              </div>
+              <div class="diagram-item">
+                <img src="application.png"  />
+                <p class="diagram-caption">
+                  Proposed application of AptaBLE in SELEX optimization. 
+                  AptaBLE can be used as a complementary tool to SELEX in aptamer discovery. </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-section">
+            <h3>Contribution</h3>
+            <p>
+              - Filtered and restructured data from large protein databases (ie RBPDP) for model training. <br>
+              - Deployed AptaBLE platform on Huggingface, with custom interface for user interaction.<br>
+              - Conducted cost-benefit analysis of integrating AI frameworks (Wandb/TensorBoard) w/ extensive retraining.<br>
+              - Developed web scraper based on Google Patents API to collect RNA binding sequences.
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="lightbox-overlay" id="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <img class="lightbox-image" id="lightbox-img" src="" alt="Enlarged diagram">
+    </div>
+
+    <script>
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const diagramImages = document.querySelectorAll('.diagram-item img');
+      const closeBtn = document.querySelector('.lightbox-close');
+
+      diagramImages.forEach(img => {
+        img.addEventListener('click', function() {
+          lightboxImg.src = this.src;
+          lightboxImg.alt = this.alt;
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeLightbox();
+      });
+
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    </script>
+  </body>
+</html>
