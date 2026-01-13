@@ -428,7 +428,6 @@ a:hover{ color: #fff; }
   letter-spacing: 0.08em;
 }
 
-/* Project detail page full-width layout */
 .project-page{
   max-width: var(--max);
   margin: 0 auto;
@@ -494,7 +493,6 @@ a:hover{ color: #fff; }
   }
 }
 
-/* Image Lightbox */
 .diagram-item img{
   cursor: pointer;
   transition: opacity 0.2s ease;
@@ -547,7 +545,28 @@ a:hover{ color: #fff; }
   opacity: 0.7;
 }
 
-/* Responsive */
+.group-photo-section{
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.group-photo-section h3{
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.group-photo{
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: block;
+  margin: 0 auto;
+}
+
 @media (max-width: 980px){
   .page{
     grid-template-columns: 1fr;
