@@ -36,7 +36,7 @@
             <img src="me.jpg" alt="Owen Yao" class="profile-picture" />
             <p class="role">Software Engineer</p>
             <p class="tagline">
-             with interests in chip design and AI.
+             building the systems that AI runs on.
             </p>
 
             <div class="cta-row">
@@ -92,39 +92,29 @@
 
           <div class="card">
             <p>
-              Hi! I'm a 2nd-year CS student at Purdue, passionate about building faster and more efficient computing systems. 
-              I'm especially interested in the intersection of software engineering and chip design, 
-              where new architectures can unlock the next generation of AI performance.
+              Hi! I'm a 3rd-year CS student at Purdue. Lately I've been building the infrastructure that AI models actually run on.
+              My latest project is a router that keeps coding agent traffic on a self-hosted model, and only reaches out to a
+              frontier model when you opt in, so your code never leaves the network unless you want it to.
             </p>
             <p>
-              Through hands-on internships at both semiconductor design (Purdue) and AI systems research (NSF-funded YC startup), 
-              I've seen firsthand how future AI workloads will demand breakthroughs in hardware efficiency. 
-              This past summer, I teamed with four ECE students to design and tape out a RISC-V CPU graphing-calculator SoC, 
-              implementing SystemVerilog and writing RISC-V assembly. 
+              I came at this from the hardware side. Last year I teamed with four ECE students to design and tape out a
+              RISC-V CPU graphing-calculator SoC, implementing SystemVerilog and writing RISC-V assembly.
+              Seeing a real chip we custom-built that could solve user problems made me want to keep pushing, just further up the stack.
             </p>
             <p>
-              Seeing a real chip we custom-built that could solve user problems made me want to keep pushing deeper into this field.
+              This past summer I worked at Lenovo as an AI Development Intern, where I built a knowledge-management RAG
+              prototype and a B2B price-optimization model.
             </p>
             <p>
-              As AI is limited by computing capacity - I'm motivated by one goal: to engineer innovative computing systems that powers the next era of AI.
+              AI is limited by computing capacity, so I'm motivated by one goal: to engineer innovative computing systems that power the next era of AI.
             </p>
             <p>
               My passions:
             </p>
             <ul>
-              <li>Chip design and verification</li>
               <li>Development of AI-based industry applications</li>
+              <li>Chip design and verification</li>
             </ul>
-
-            <div class="chips" aria-label="Key skills">
-              <span class="chip">C</span>
-              <span class="chip">C++</span>
-              <span class="chip">Python</span>
-              <span class="chip">R</span>
-              <span class="chip">Git</span>
-              <span class="chip">Java</span>
-              <span class="chip">PostgreSQL</span>
-            </div>
           </div>
         </section>
 
@@ -132,6 +122,13 @@
           <h2 class="section-title">Projects & Publications</h2>
 
           <div class="stack" aria-label="Writing list">
+            <a class="rowlink" href="index.html">
+              <img class="rowlink-image" src="router_pipeline.png" alt="Privacy-Preserving Inference Router architecture diagram" />
+              <div class="rowlink-content">
+                <span class="rowlink-title">Privacy-Preserving Inference Router for Self-Hosted Coding Agents</span>
+                <span class="rowlink-meta">2026</span>
+              </div>
+            </a>
             <a class="rowlink" href="riscv-cpu.html">
               <img class="rowlink-image" src="top_level.png" alt="RISC-V CPU Project" />
               <div class="rowlink-content">
@@ -169,6 +166,24 @@
             <li class="item">
               <a class="item-link" rel="noreferrer" aria-label="Company link">
                 <div class="item-meta">
+                  <p class="item-dates">Jul — Aug 2026</p>
+                </div>
+                <div class="item-body">
+                  <h3 class="item-title">
+                    AI Development Intern - Lenovo
+                  </h3>
+                  <p class="item-desc">
+                    Built a synthetic enterprise knowledge-management RAG prototype reaching 90% accuracy.
+                    Built a B2B price-optimization prototype predicting quote win probability, increasing simulated
+                    expected contribution 12% over historical pricing.
+                  </p>
+                </div>
+              </a>
+            </li>
+
+            <li class="item">
+              <a class="item-link" rel="noreferrer" aria-label="Company link">
+                <div class="item-meta">
                   <p class="item-dates">Jun — Aug 2025</p>
                 </div>
                 <div class="item-body">
@@ -179,13 +194,6 @@
                     Designed and implemented a RISC-V single-cycle cpu with SPI screen and UART keypad protocols connected by MMIO.
                     Final silicon tape-out featured ~5.5K D-flip flops and ~13K standard cells, with full graphing calculator functionality.
                   </p>
-
-                  <div class="chips">
-                    <span class="chip">SystemVerilog</span>
-                    <span class="chip">RISC-V Assembly</span>
-                    <span class="chip">Chip design</span>
-                    <span class="chip">Design verification</span>
-                  </div>
                 </div>
               </a>
             </li>
@@ -203,31 +211,6 @@
                     AptaBLE paper accepted for presentation at the 2024 Vancouver NeurIPS conference.
                     Showcased AptaBLE design flow and performance metrics during workshop sessions.
                   </p>
-                </div>
-              </a>
-            </li>
-
-            <li class="item">
-              <a class="item-link" rel="noreferrer" aria-label="Company link">
-                <div class="item-meta">
-                  <p class="item-dates">Jun — Aug 2024</p>
-                </div>
-                <div class="item-body">
-                  <h3 class="item-title">
-                    SWE Intern - Lenovo
-                  </h3>
-                  <p class="item-desc">
-                    Created a pipeline for product chart generation automation, 
-                    converting outsourced tabular data into presentable graphs, reducing turnaround time by 92%.
-                    Analyzed TRL models in Table Q/A applications for future optimizations.
-                  </p>
-
-                  <div class="chips">
-                    <span class="chip">Python</span>
-                    <span class="chip">Pandas</span>
-                    <span class="chip">LLM</span>
-                    <span class="chip">Data transformation</span>
-                  </div>
                 </div>
               </a>
             </li>
@@ -249,11 +232,6 @@
                 <p class="project-desc">
                   A small web app that helps people track goals with a clean, fast UI.
                 </p>
-                <div class="chips">
-                  <span class="chip">React</span>
-                  <span class="chip">Vite</span>
-                  <span class="chip">CSS</span>
-                </div>
                 <div class="project-footer">
                   <span>View →</span>
                 </div>
@@ -268,11 +246,6 @@
                 <p class="project-desc">
                   A CLI tool that automates repetitive dev tasks and generates reports.
                 </p>
-                <div class="chips">
-                  <span class="chip">Node.js</span>
-                  <span class="chip">CLI</span>
-                  <span class="chip">Testing</span>
-                </div>
                 <div class="project-footer">
                   <span>View →</span>
                 </div>
@@ -287,11 +260,6 @@
                 <p class="project-desc">
                   A lightweight component library focused on accessibility and speed.
                 </p>
-                <div class="chips">
-                  <span class="chip">TypeScript</span>
-                  <span class="chip">A11y</span>
-                  <span class="chip">Storybook</span>
-                </div>
                 <div class="project-footer">
                   <span>View →</span>
                 </div>

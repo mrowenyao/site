@@ -242,22 +242,6 @@ a:hover{ color: #fff; }
   color: rgba(255,255,255,0.9);
 }
 
-.chips{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
-}
-.chip{
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.03);
-  color: rgba(255,255,255,0.78);
-  font-size: 13px;
-  font-weight: 600;
-}
-
 .stack{
   list-style: none;
   padding: 0;
